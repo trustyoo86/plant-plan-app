@@ -1,13 +1,13 @@
 import { View, Text, StyleSheet } from 'react-native';
-import React from 'react';
 import { Stack } from 'expo-router';
+import React from 'react';
 
-export default function HomeScreen() {
+export default function Settings() {
   return (
     <View style={styles.container}>
       <Stack.Screen 
         options={{
-          title: "Plant Plan",
+          title: "Settings",
           headerStyle: {
             backgroundColor: '#f4511e',
           },
@@ -17,8 +17,7 @@ export default function HomeScreen() {
           },
         }} 
       />
-      <Text style={styles.title}>Welcome to Plant Plan</Text>
-      <Text style={styles.subtitle}>Your Personal Plant Care Assistant</Text>
+      <Text style={styles.title}>Settings Page</Text>
     </View>
   );
 }
@@ -33,10 +32,5 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#666',
   },
 });
