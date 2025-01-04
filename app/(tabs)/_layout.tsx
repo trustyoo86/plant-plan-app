@@ -7,14 +7,21 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#f4511e',
-        headerShown: false,
+        tabBarActiveTintColor: '#4CAF50',
+        headerShown: true,
         tabBarStyle: Platform.select({
           ios: {
             backgroundColor: '#fff',
+            borderTopWidth: 1,
+            borderTopColor: '#eee',
+            elevation: 0,
+            shadowOpacity: 0,
           },
-          default: {
+          android: {
             backgroundColor: '#fff',
+            borderTopWidth: 1,
+            borderTopColor: '#eee',
+            elevation: 0,
           },
         }),
       }}>
@@ -22,6 +29,7 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
+          headerShown: true,
           tabBarIcon: ({ color, size }) => <Ionicons name="home" size={size || 24} color={color} />,
         }}
       />
@@ -33,10 +41,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="settings"
+        name="menu"
         options={{
-          title: 'Settings',
-          tabBarIcon: ({ color, size }) => <Ionicons name="settings" size={size || 24} color={color} />,
+          title: 'Menu',
+          tabBarIcon: ({ color, size }) => <Ionicons name="menu" size={size || 24} color={color} />,
         }}
       />
     </Tabs>
