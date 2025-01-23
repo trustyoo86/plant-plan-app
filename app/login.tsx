@@ -9,14 +9,16 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { useAuth } from '../context/AuthContext';
-import { Stack, Redirect } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 
 export default function LoginScreen() {
   const { user, signInWithGoogle, signInWithFacebook, signInWithApple } = useAuth();
+  const router = useRouter();
 
   // If user is already logged in, redirect to home
   if (user) {
-    return <Redirect href="/(tabs)" />;
+    router.push('/(tabs)');
+    return null;
   }
 
   return (
@@ -30,7 +32,7 @@ export default function LoginScreen() {
       <View style={styles.content}>
         <View style={styles.header}>
           <Image
-            source={require('../assets/images/logo.png')}
+            source={require('../assets/images/logo.svg')}
             style={styles.logo}
           />
           <Text style={styles.title}>Plant Plan</Text>
@@ -43,7 +45,7 @@ export default function LoginScreen() {
             onPress={signInWithGoogle}
           >
             <Image
-              source={require('../assets/images/google-logo.png')}
+              source={require('../assets/images/google-logo.svg')}
               style={styles.buttonIcon}
             />
             <Text style={styles.buttonText}>Continue with Google</Text>
@@ -54,7 +56,7 @@ export default function LoginScreen() {
             onPress={signInWithFacebook}
           >
             <Image
-              source={require('../assets/images/facebook-logo.png')}
+              source={require('../assets/images/facebook-logo.svg')}
               style={styles.buttonIcon}
             />
             <Text style={[styles.buttonText, styles.facebookButtonText]}>
@@ -68,7 +70,7 @@ export default function LoginScreen() {
               onPress={signInWithApple}
             >
               <Image
-                source={require('../assets/images/apple-logo.png')}
+                source={require('../assets/images/apple-logo.svg')}
                 style={styles.buttonIcon}
               />
               <Text style={[styles.buttonText, styles.appleButtonText]}>
@@ -95,17 +97,16 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    padding: 20,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   header: {
-    alignItems: 'center',
-    marginTop: 60,
+    marginBottom: 20,
   },
   logo: {
-    width: 100,
-    height: 100,
-    marginBottom: 20,
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
   },
   title: {
     fontSize: 32,
